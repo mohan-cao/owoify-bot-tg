@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "public": true,
+  "env": {
+    "TELEGRAM_TOKEN": "@telegram_token"
+  }
+}
