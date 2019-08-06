@@ -80,14 +80,20 @@ function owoify(v, level="owo") {
       v = v.replace(/([Hh])ey/g, "$1ay");
       v = v.replace(/dead/g, "ded");
     case "uwu":
-      v = v.replace(/(?:r|l)/g, "w");
-      v = v.replace(/(?:R|L)/g, "W");
+      v = v.replace(/that/g, "dat"); // stop correcting that to fat
+      v = v.replace(/That/g, "Dat");
       v = v.replace(/[Tt]h(?![Ee])/g, "f");
       v = v.replace(/TH(?!E)/g, "F");
       v = v.replace(/[({<]/g, "｡･:*:･ﾟ★,｡･:*:･ﾟ☆");
       v = v.replace(/[)}>]/g, "☆ﾟ･:*:･｡,★ﾟ･:*:･｡");
-      v = v.replace(/[.,](?![0-9])/g, " " + faces[Math.floor(Math.random()*faces.length)] + " ");
-      v = v.replace(/[!;]+/g, " "+ faces[Math.floor(Math.random()*faces.length)]+ " ");
+      v = v.replace(/[.,](?![0-9])/g, ()=>(" " + faces[Math.floor(Math.random()*faces.length)]));
+      v = v.replace(/[!;]+/g, ()=>(" " + faces[Math.floor(Math.random()*faces.length)]));
+      v = v.replace(/le/g, 'wal');
+      v = v.replace(/ve/g, 'we');
+      v = v.replace(/Ve/g, 'We');
+      v = v.replace(/ry/g, 'wwy');
+      v = v.replace(/(?:r|l)/g, "w");
+      v = v.replace(/(?:R|L)/g, "W");
     case "owo":
       v = v.replace(/ll/g, "ww");
       v = v.replace(/[aeiour]l/g, "wl");
@@ -99,6 +105,9 @@ function owoify(v, level="owo") {
       v = v.replace(/([Pp])oi/g, "$1woi");
       v = v.replace(/([DdFfGgHhJjPpQqRrSsTtXxYyZz])le/g, "$1wal");
     default:
+      v = v.replace(/([Ff])uc/g, "$1wuc");
+      v = v.replace(/([Mm])om/g, "$1wom");
+      v = v.replace(/([Mm])e/g, "$1we");
       v = v.replace(/n([aeiou])/g, 'ny$1');
       v = v.replace(/N([aeiou])/g, 'Ny$1');
       v = v.replace(/N([AEIOU])/g, 'NY$1');
