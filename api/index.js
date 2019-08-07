@@ -55,7 +55,7 @@ function handwalfunkshun(chatId, command, text, isBot, req, res) {
     text: responseText + ""
   })
   .then((response) => {
-    res.status(200).send(response);
+    res.status(200).send(CircularJSON.stringify(response));
   }).catch((error) => {
     console.error("Broke", error);
     res.send(error);
