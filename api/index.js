@@ -19,7 +19,7 @@ const app = (req, res) => {
   // Regex for hello
   if (sentMessage.match(/hello/gi)) {
     hewwo(chatId, res);
-  } else if (req.body.message.body.entities.length > 0 && req.body.message.entities[0].type === 'bot_command') {
+  } else if (req.body.message.entities.length > 0 && req.body.message.entities[0].type === 'bot_command') {
     // if no hello present, handle commands
     const { length, offset } = req.body.message.entities[0];
     const command = sentMessage.slice(offset + 1, length);
