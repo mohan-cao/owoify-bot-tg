@@ -13,7 +13,7 @@ const app = (req, res) => {
     return;
   }
   const chatId = req.body.message.chat.id;
-  const sentMessage = req.body.message.text;
+  const sentMessage = req.body.message.text || "";
   const isBot = !!req.body.message.from.is_bot;
   console.log("Ping for new message!")
   // Regex for hello
