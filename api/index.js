@@ -29,6 +29,7 @@ const app = (req, res) => {
     console.debug("Handle command", command, parsedCommandInput);
     handwalfunkshun(chatId, command, parsedCommandInput, isBot, req, res);
   } else {
+    console.log("Not something I can handle? :3", sentMessage, msgCommand);
     statusOWOK(res);
   }
 };
