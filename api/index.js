@@ -1,6 +1,6 @@
 // Dependencies
 const axios = require('axios');
-const inspect = require('util').inspect;
+const CircularJSON = require('circular-json');
 
 const url = 'https://api.telegram.org/bot';
 
@@ -57,7 +57,7 @@ function handwalfunkshun(chatId, command, text, isBot, req, res) {
   .then((response) => {
     res.status(200).send(response);
   }).catch((error) => {
-    console.error("Broke", inspect(error));
+    console.error("Broke", error);
     res.send(error);
   });
 }
@@ -68,7 +68,7 @@ function hewwo(chatId, res) {
     text: 'hewwo! im owoify bot!\nOwO *notices ur buldge* whats this??'
   })
   .then((response) => {
-    res.status(200).send(response);
+    res.status(200).send(CircularJSON.stringify(response));
   }).catch((error) => {
     res.send(error);
   });
