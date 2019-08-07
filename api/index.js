@@ -12,18 +12,21 @@ const app = (req, res) => {
     statusOWOK(res);
     return;
   }
-  const chatId = req.body.message.chat.id;
-  const sentMessage = req.body.message.text || "";
-  const isBot = !!req.body.message.from.is_bot;
+  const msg = req.body.message;
+  const chatId = msg.chat.id;
+  const sentMessage = msg.text || "";
+  const isBot = !!msg.from.is_bot;
+  const msgCommand = msg.hasOwnProperty("entities") && msg.entities.length >= 0 && msg.entities[0].type === 'bot_command' && msg.entities[0];
   console.log("Ping for new message!")
   // Regex for hello
   if (sentMessage.match(/hello/gi)) {
     hewwo(chatId, res);
-  } else if (Array.isArray(req.body.message.entities) && req.body.message.entities.length > 0 && req.body.message.entities[0].type === 'bot_command') {
+  } else if (msgCommand) {
     // if no hello present, handle commands
-    const { length, offset } = req.body.message.entities[0];
-    const command = sentMessage.slice(offset + 1, length);
-    const parsedCommandInput = sentMessage.slice(length);
+    const { length, offset } = msg.entities[0];
+    const command = sentMessage.slice(offset + 1, length).trim();
+    const parsedCommandInput = sentMessage.slice(length).trim();
+    console.debug("Handle command", command, parsedCommandInput);
     handwalfunkshun(chatId, command, parsedCommandInput, isBot, req, res);
   } else {
     statusOWOK(res);
@@ -36,7 +39,8 @@ const app = (req, res) => {
 
 function handwalfunkshun(chatId, command, text, isBot, req, res) {
   const commands = ["owo", "uwu", "uvu"];
-  if (isBot || commands.indexOf(command) === -1) {
+  command = commands.reduce((x, y) => command.indexOf(y) >= 0 && command || x, false);
+  if (isBot || !command) {
     // discriminate against bot-kind and losers who cant command
     console.log("Command not supported:", command);
     statusOWOK(res);
