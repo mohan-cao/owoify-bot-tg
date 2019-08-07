@@ -26,7 +26,7 @@ const app = (req, res) => {
     const { length, offset } = msg.entities[0];
     const command = sentMessage.slice(offset + 1, length).trim();
     const parsedCommandInput = sentMessage.slice(length).trim();
-    console.debug("Handle command", command, parsedCommandInput);
+    console.log("Handle command", command, parsedCommandInput);
     handwalfunkshun(chatId, command, parsedCommandInput, isBot, req, res);
   } else {
     console.log("Not something I can handle? :3", sentMessage, msgCommand);
@@ -47,14 +47,16 @@ function handwalfunkshun(chatId, command, text, isBot, req, res) {
     statusOWOK(res);
     return;
   }
-
+  const responseText = owoify(text, command) || "";
+  console.log("Your owoified text is:", responseText);
   axios.post(`${url}${apiToken}/sendMessage`, {
     chat_id: chatId,
-    text: owoify(text, command) || ""
+    text: responseText
   })
   .then((response) => {
     res.status(200).send(response);
   }).catch((error) => {
+    console.error("Broke", error);
     res.send(error);
   });
 }
