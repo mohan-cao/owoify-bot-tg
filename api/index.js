@@ -71,8 +71,9 @@ function statusOWOK(res) {
 }
 
 function owoify(v, level="owo") {
-  let faces = ["(・`ω´・)",";;w;;","owo","UwU",">w<","^w^"];
+  let faces = ["(・`ω´・)",";;w;;","owo","UwU",">w<","^w^","(* ^ ω ^)","(⌒ω⌒)","ヽ(*・ω・)ﾉ","(o´∀`o)","(o･ω･o)","＼(＾▽＾)／"];
   // HAHAHA I CAN FINALLY JUSTIFY SWITCH STATEMENTS NOW
+  // Yeah I know I can use a reducer but this is so much more funny to impwement
   switch (level) {
     case "uvu":
       v = v.replace(/o/g, ()=>Math.round(Math.random())?"owo":"o");
@@ -98,6 +99,10 @@ function owoify(v, level="owo") {
       v = v.replace(/ll/g, "ww");
       v = v.replace(/[aeiour]l/g, "wl");
       v = v.replace(/[AEIOUR]([lL])/g, "W$1");
+      v = v.replace(/[aeiour]o/g, "wo");
+      v = v.replace(/[AEIOUR]([oO])/g, "W$1");
+      v = v.replace(/([Oo])ld/g, '$1ld');
+      v = v.replace(/OLD/g, 'OLD');
       v = v.replace(/[vw]le/g, "wal");
       v = v.replace(/([Ff])i/g, "$1wi");
       v = v.replace(/FI/g, "FWI");
@@ -113,6 +118,7 @@ function owoify(v, level="owo") {
       v = v.replace(/N([AEIOU])/g, 'NY$1');
       v = v.replace(/ove/g, "uv");
       v = v.replace(/OVE/g, "UV");
+      v = v.replace(/\b(ha|hah|heh|hehe)+\b/g, 'hehe xD');
       break;
   }
   return v;
