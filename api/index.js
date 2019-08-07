@@ -1,5 +1,6 @@
 // Dependencies
 const axios = require('axios');
+const inspect = require('util').inspect;
 
 const url = 'https://api.telegram.org/bot';
 
@@ -47,16 +48,16 @@ function handwalfunkshun(chatId, command, text, isBot, req, res) {
     statusOWOK(res);
     return;
   }
-  const responseText = owoify(text, command) || "";
+  const responseText = owoify(text, command);
   console.log("Your owoified text is:", responseText);
   axios.post(`${url}${apiToken}/sendMessage`, {
     chat_id: chatId,
-    text: responseText
+    text: responseText + ""
   })
   .then((response) => {
     res.status(200).send(response);
   }).catch((error) => {
-    console.error("Broke", error);
+    console.error("Broke", inspect(error));
     res.send(error);
   });
 }
