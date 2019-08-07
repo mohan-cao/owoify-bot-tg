@@ -49,7 +49,13 @@ function handwalfunkshun(chatId, command, text, isBot, req, res) {
     return;
   }
   const responseText = owoify(text, command);
+  if (!responseText || !responseText.trim()) {
+    console.log("Nowofied text :(");
+    statusOWOK(res);
+    return;
+  }
   console.log("Your owoified text is:", responseText);
+
   axios.post(`${url}${apiToken}/sendMessage`, {
     chat_id: chatId,
     text: responseText + ""
