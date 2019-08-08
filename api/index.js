@@ -120,7 +120,7 @@ function owoify(v, level="owo") {
       v = v.replace(/[lr]o/g, "wo");
       v = v.replace(/[LR]([oO])/g, "W$1");
       v = v.replace(/([bcdfghjkmnpqstxyz])o/g, "$1wo");
-      v = v.replace(/([BCDFGHJKMNPQSTXYZ])([oO])/g, "$1W$2");
+      v = v.replace(/([BCDFGHJKMNPQSTXYZ])([oO])/g, (match, m1, m2)=>m1+(m2.toUpperCase()===m2?"W":"w")+m2);
       v = v.replace(/[vw]le/g, "wal");
       v = v.replace(/([Ff])i/g, "$1wi");
       v = v.replace(/FI/g, "FWI");
