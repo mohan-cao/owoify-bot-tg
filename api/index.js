@@ -41,14 +41,14 @@ const app = (req, res) => {
 
 function handwalfunkshun(chatId, command, text, isBot, req, res) {
   const commands = ["owo", "uwu", "uvu"];
-  command = commands.reduce((x, y) => command.indexOf(y) >= 0 && command || x, false);
-  if (isBot || !command) {
+  let parsed_command = commands.reduce((x, y) => command.indexOf(y) >= 0 && y || x, false);
+  if (isBot || !parsed_command) {
     // discriminate against bot-kind and losers who cant command
     console.log("Command not supported:", command);
     statusOWOK(res);
     return;
   }
-  const responseText = owoify(text, command);
+  const responseText = owoify(text, parsed_command);
   if (!responseText || !responseText.trim()) {
     console.log("Nowofied text :(");
     statusOWOK(res);
