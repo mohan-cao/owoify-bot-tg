@@ -137,6 +137,7 @@ function owoify(v, level="owo") {
       v = v.replace(/ove/g, "uv");
       v = v.replace(/OVE/g, "UV");
       v = v.replace(/\b(ha|hah|heh|hehe)+\b/g, 'hehe xD');
+      v = v.replace(/\b([Tt])he\b/g, "$1eh");
       break;
   }
   return v;
