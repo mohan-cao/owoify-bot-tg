@@ -94,16 +94,17 @@ function owoify(v, level="owo") {
       v = v.replace(/ew/g, "uwu");
       v = v.replace(/([Hh])ey/g, "$1ay");
       v = v.replace(/dead/g, "ded");
+      v = v.replace(/n[aeiou]*t/g, "nd");
     case "uwu":
       v = v.replace(/[({<]/g, "｡･:*:･ﾟ★,｡･:*:･ﾟ☆");
       v = v.replace(/[)}>]/g, "☆ﾟ･:*:･｡,★ﾟ･:*:･｡");
-      v = v.replace(/[.,](?![0-9])/g, ()=>(" " + faces[Math.floor(Math.random()*faces.length)]));
       v = v.replace(/[!;]+/g, ()=>(" " + faces[Math.floor(Math.random()*faces.length)]));
+      v = v.replace(/[.,](?![0-9])/g, ()=>(" " + faces[Math.floor(Math.random()*faces.length)]));
       v = v.replace(/that/g, "dat"); // stop correcting that to fat
       v = v.replace(/That/g, "Dat");
       v = v.replace(/[Tt]h(?![Ee])/g, "f");
       v = v.replace(/TH(?!E)/g, "F");
-      v = v.replace(/le/g, 'wal');
+      v = v.replace(/le$/g, 'wal');
       v = v.replace(/ve/g, 'we');
       v = v.replace(/Ve/g, 'We');
       v = v.replace(/ry/g, 'wwy');
@@ -111,8 +112,8 @@ function owoify(v, level="owo") {
       v = v.replace(/(?:R|L)/g, "W");
     case "owo":
       v = v.replace(/ll/g, "ww");
-      v = v.replace(/[aeiur]l/g, "wl");
-      v = v.replace(/[AEIUR]([lL])/g, "W$1");
+      v = v.replace(/[aeiur]l$/g, "wl");
+      v = v.replace(/[AEIUR]([lL])$/g, "W$1");
       v = v.replace(/([Oo])ld/g, '$1wld');
       v = v.replace(/OLD/g, 'OWLD');
       v = v.replace(/([Oo])l/g, "$1wl");
