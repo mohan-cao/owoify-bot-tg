@@ -1,6 +1,7 @@
 // Dependencies
 const axios = require('axios');
 const CircularJSON = require('circular-json');
+const owoify = require('owoify-js');
 
 const url = 'https://api.telegram.org/bot';
 
@@ -82,66 +83,6 @@ function hewwo(chatId, res) {
 
 function statusOWOK(res) {
   res.status(200).send({});
-}
-
-function owoify(v, level="owo") {
-  let faces = ["(・`ω´・)",";;w;;","owo","UwU",">w<","^w^","(* ^ ω ^)","(⌒ω⌒)","ヽ(*・ω・)ﾉ","(o´∀`o)","(o･ω･o)","＼(＾▽＾)／"];
-  // HAHAHA I CAN FINALLY JUSTIFY SWITCH STATEMENTS NOW
-  // Yeah I know I can use a reducer but this is so much more funny to impwement
-  switch (level) {
-    case "uvu":
-      v = v.replace(/o/g, ()=>Math.round(Math.random())?"owo":"o");
-      v = v.replace(/ew/g, "uwu");
-      v = v.replace(/([Hh])ey/g, "$1ay");
-      v = v.replace(/dead/g, "ded");
-      v = v.replace(/n[aeiou]*t/g, "nd");
-    case "uwu":
-      v = v.replace(/[({<]/g, "｡･:*:･ﾟ★,｡･:*:･ﾟ☆");
-      v = v.replace(/[)}>]/g, "☆ﾟ･:*:･｡,★ﾟ･:*:･｡");
-      v = v.replace(/[!;]+/g, ()=>(" " + faces[Math.floor(Math.random()*faces.length)]));
-      v = v.replace(/[.,](?![0-9])/g, ()=>(" " + faces[Math.floor(Math.random()*faces.length)]));
-      v = v.replace(/that/g, "dat"); // stop correcting that to fat
-      v = v.replace(/That/g, "Dat");
-      v = v.replace(/[Tt]h(?![Ee])/g, "f");
-      v = v.replace(/TH(?!E)/g, "F");
-      v = v.replace(/le$/g, 'wal');
-      v = v.replace(/ve/g, 'we');
-      v = v.replace(/Ve/g, 'We');
-      v = v.replace(/ry/g, 'wwy');
-      v = v.replace(/(?:r|l)/g, "w");
-      v = v.replace(/(?:R|L)/g, "W");
-    case "owo":
-      v = v.replace(/ll/g, "ww");
-      v = v.replace(/[aeiur]l$/g, "wl");
-      v = v.replace(/[AEIUR]([lL])$/g, "W$1");
-      v = v.replace(/([Oo])ld/g, '$1wld');
-      v = v.replace(/OLD/g, 'OWLD');
-      v = v.replace(/([Oo])l/g, "$1wl");
-      v = v.replace(/OL/g, "OWL");
-      v = v.replace(/[lr]o/g, "wo");
-      v = v.replace(/[LR]([oO])/g, "W$1");
-      v = v.replace(/([bcdfghjkmnpqstxyz])o/g, "$1wo");
-      v = v.replace(/([BCDFGHJKMNPQSTXYZ])([oO])/g, (match, m1, m2)=>m1+(m2.toUpperCase()===m2?"W":"w")+m2);
-      v = v.replace(/[vw]le/g, "wal");
-      v = v.replace(/([Ff])i/g, "$1wi");
-      v = v.replace(/FI/g, "FWI");
-      v = v.replace(/([Vv])er/g, "wer");
-      v = v.replace(/([Pp])oi/g, "$1woi");
-      v = v.replace(/([DdFfGgHhJjPpQqRrSsTtXxYyZz])le/g, "$1wal");
-    default:
-      v = v.replace(/([Ff])uc/g, "$1wuc");
-      v = v.replace(/([Mm])om/g, "$1wom");
-      v = v.replace(/([Mm])e/g, "$1we");
-      v = v.replace(/n([aeiou])/g, 'ny$1');
-      v = v.replace(/N([aeiou])/g, 'Ny$1');
-      v = v.replace(/N([AEIOU])/g, 'NY$1');
-      v = v.replace(/ove/g, "uv");
-      v = v.replace(/OVE/g, "UV");
-      v = v.replace(/\b(ha|hah|heh|hehe)+\b/g, 'hehe xD');
-      v = v.replace(/\b([Tt])he\b/g, "$1eh");
-      break;
-  }
-  return v;
 }
 
 module.exports = app;
