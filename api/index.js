@@ -1,7 +1,7 @@
 // Dependencies
 const axios = require('axios');
 const CircularJSON = require('circular-json');
-const owoify = require('owoify-js');
+const owoify = require('owoify-js').default;
 
 const url = 'https://api.telegram.org/bot';
 
